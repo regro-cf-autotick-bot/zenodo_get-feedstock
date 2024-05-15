@@ -25,6 +25,7 @@ requirements:
     - python >=3.6
     - requests
     - python-wget
+    - humanize
 
 test:
   imports:
