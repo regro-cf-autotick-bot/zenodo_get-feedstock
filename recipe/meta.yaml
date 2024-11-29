@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/zenodo_get-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/zenodo_get-{{ version }}.tar.gz
   sha256: b0ac60af981682e711f42c7ba1483f49c23869d9fc169f6addb63f8a95847a72
 
 build:
-  number: 0
+  number: 1
   noarch: python
   entry_points:
     - zenodo_get = zenodo_get.zget:zenodo_get
@@ -20,9 +20,9 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - requests
     - python-wget
     - humanize
@@ -35,6 +35,7 @@ test:
     - zenodo_get --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://gitlab.com/dvolgyes/zenodo_get
